@@ -1,44 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:iefunden/commons/utilities.dart';
+import 'package:iefunden/color.dart';
 
 ThemeData? generateTheme() {
   return ThemeData(
     primarySwatch: Colors.blue,
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: ColorManager.creamWhite,
     fontFamily: "Inter",
-    textTheme: const TextTheme(
-      displayLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+    textTheme: TextTheme(
+      displayLarge:
+          const TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
       titleLarge: TextStyle(
-        fontSize: 40.0,
-        color: Colors.white,
+        fontSize: 32.0,
+        color: ColorManager.creamWhite,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: TextStyle(
         fontSize: 18.0,
-        color: Colors.white,
+        color: ColorManager.creamWhite,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
         fontSize: 18.0,
-        color: Colors.white,
+        color: ColorManager.creamWhite,
+        fontWeight: FontWeight.bold,
+      ),
+      bodySmall: const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        side: MaterialStateProperty.all(BorderSide.none),
-        shape: MaterialStateProperty.all(
-          const RoundedRectangleBorder(
+        side: const MaterialStatePropertyAll(BorderSide.none),
+        shape: const MaterialStatePropertyAll(
+          RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.zero),
           ),
         ),
-        backgroundColor: MaterialStateProperty.all(
-          HexColor("#FFFBFC"),
-        ),
-        textStyle: MaterialStateProperty.all(
+        backgroundColor: MaterialStatePropertyAll(ColorManager.creamWhite),
+        textStyle: MaterialStatePropertyAll(
           TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.bold,
-            foreground: Paint()..color = HexColor("#132885"),
+            foreground: Paint()..color = ColorManager.navyBlue,
           ),
         ),
       ),
