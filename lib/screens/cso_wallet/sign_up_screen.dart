@@ -5,10 +5,10 @@ import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/commons/textfield.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_signup_controller.dart';
+import 'package:iefunden/controllers/cso_wallet/cso_wallet_signup_controller.dart';
 
-class CPPASignUpScreen extends StatelessWidget {
-  const CPPASignUpScreen({super.key});
+class CsoWalletSignUpScreen extends StatelessWidget {
+  const CsoWalletSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,14 @@ class CPPASignUpScreen extends StatelessWidget {
                     decoration: InputDecoration(
                       isDense: true,
                       contentPadding: const EdgeInsets.all(5),
-                      fillColor: ColorManager.lightBlueShade,
+                      fillColor: ColorManager.lightGreenShade,
                       filled: true,
                       border: InputBorder.none,
                     ),
                   ),
                 ),
                 Expanded(
-                    child:
-                        submitButton("Browse ", ColorManager.navyBlue, () {})),
+                    child: submitButton("Browse ", ColorManager.green, () {})),
               ],
             ),
           )
@@ -49,13 +48,13 @@ class CPPASignUpScreen extends StatelessWidget {
       );
     }
 
-    var controller = CPPASignUpController();
+    var controller = CsoWalletSignUpController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         color: ColorManager.creamWhite,
         child: ContainerWRadial(
-          color: ColorManager.navyBlue,
+          color: ColorManager.green,
           child: Padding(
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.width * .10,
@@ -72,12 +71,12 @@ class CPPASignUpScreen extends StatelessWidget {
                     SvgPicture.asset(
                       ("assets/images/menu.svg"),
                       semanticsLabel: 'iefunded menu',
-                      color: ColorManager.navyBlue,
+                      color: ColorManager.green,
                     ),
                     Text(
                       "Iefunden",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.navyBlue,
+                            color: ColorManager.green,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -103,51 +102,45 @@ class CPPASignUpScreen extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     bottom: 20.0, top: 40),
                                 child: Text(
-                                  "Welcome to \nC/PPA Platform",
+                                  "Welcome to \nCSO Wallet",
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        color: ColorManager.navyBlue,
+                                        color: ColorManager.green,
                                         fontSize: 25.0,
                                         fontWeight: FontWeight.w900,
                                       ),
                                 ),
                               ),
                               TextFieldBox(
-                                label: "Company Name",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyName,
-                                onChangeCallback: (value) {},
-                              ),
-                              TextFieldBox(
-                                label: "Company Address",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
-                                onChangeCallback: (value) {},
-                              ),
-                              TextFieldBox(
-                                label: "Contact Person",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
+                                label: "Full Name",
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.fullName,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
                                 label: "Email",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.email,
+                                onChangeCallback: (value) {},
+                              ),
+                              TextFieldBox(
+                                label: "Password",
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.password,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
                                 label: "Mobile No.",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.mobile,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
-                                label: "Create PIN",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
+                                label: "Type of Service",
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.typeOfService,
                                 onChangeCallback: (value) {},
                               ),
                               uploadBox(),
@@ -156,8 +149,8 @@ class CPPASignUpScreen extends StatelessWidget {
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: submitButton("Sign Up",
-                                          ColorManager.navyBlue, () {}),
+                                      child: submitButton(
+                                          "Sign Up", ColorManager.green, () {}),
                                     ),
                                   ],
                                 ),
@@ -176,7 +169,7 @@ class CPPASignUpScreen extends StatelessWidget {
                                         .textTheme
                                         .bodySmall
                                         ?.copyWith(
-                                          color: ColorManager.navyBlue,
+                                          color: ColorManager.green,
                                         ),
                                   ),
                                 ],

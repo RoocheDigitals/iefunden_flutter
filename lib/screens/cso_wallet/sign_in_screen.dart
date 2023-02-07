@@ -5,57 +5,21 @@ import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/commons/textfield.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_signup_controller.dart';
+import 'package:iefunden/controllers/cso_wallet/iib_portfolio_signin_controller.dart';
+import 'package:iefunden/controllers/navigation_controller.dart';
 
-class CPPASignUpScreen extends StatelessWidget {
-  const CPPASignUpScreen({super.key});
+class CsoWalletSignInScreen extends StatelessWidget {
+  const CsoWalletSignInScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget uploadBox() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Upload Logo",
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Colors.black, fontSize: 14),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    scrollPadding: const EdgeInsets.only(bottom: 300),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: const EdgeInsets.all(5),
-                      fillColor: ColorManager.lightBlueShade,
-                      filled: true,
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                Expanded(
-                    child:
-                        submitButton("Browse ", ColorManager.navyBlue, () {})),
-              ],
-            ),
-          )
-        ],
-      );
-    }
-
-    var controller = CPPASignUpController();
+    var controller = CsoWalletSignInController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
         color: ColorManager.creamWhite,
         child: ContainerWRadial(
-          color: ColorManager.navyBlue,
+          color: ColorManager.green,
           child: Padding(
             padding: EdgeInsets.only(
               top: MediaQuery.of(context).size.width * .10,
@@ -72,12 +36,12 @@ class CPPASignUpScreen extends StatelessWidget {
                     SvgPicture.asset(
                       ("assets/images/menu.svg"),
                       semanticsLabel: 'iefunded menu',
-                      color: ColorManager.navyBlue,
+                      color: ColorManager.green,
                     ),
                     Text(
                       "Iefunden",
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.navyBlue,
+                            color: ColorManager.green,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -101,63 +65,61 @@ class CPPASignUpScreen extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(
-                                    bottom: 20.0, top: 40),
+                                  bottom: 20.0,
+                                  top: 150,
+                                ),
                                 child: Text(
-                                  "Welcome to \nC/PPA Platform",
+                                  "Welcome to \nCSO Wallet",
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge
                                       ?.copyWith(
-                                        color: ColorManager.navyBlue,
+                                        color: ColorManager.green,
                                         fontSize: 25.0,
                                         fontWeight: FontWeight.w900,
                                       ),
                                 ),
                               ),
                               TextFieldBox(
-                                label: "Company Name",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyName,
+                                label: "Email / Username",
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.email,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
-                                label: "Company Address",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
+                                label: "Password",
+                                color: ColorManager.lightGreenShade,
+                                controller: controller.password,
                                 onChangeCallback: (value) {},
                               ),
-                              TextFieldBox(
-                                label: "Contact Person",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
-                                onChangeCallback: (value) {},
-                              ),
-                              TextFieldBox(
-                                label: "Email",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
-                                onChangeCallback: (value) {},
-                              ),
-                              TextFieldBox(
-                                label: "Mobile No.",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
-                                onChangeCallback: (value) {},
-                              ),
-                              TextFieldBox(
-                                label: "Create PIN",
-                                color: ColorManager.lightBlueShade,
-                                controller: controller.companyAddress,
-                                onChangeCallback: (value) {},
-                              ),
-                              uploadBox(),
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: Row(
                                   children: [
                                     Expanded(
-                                      child: submitButton("Sign Up",
-                                          ColorManager.navyBlue, () {}),
+                                      child: submitButton(
+                                        "Sign In",
+                                        ColorManager.green,
+                                        () => NavigationController
+                                            .goToWalletDashboardMenu(),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Forgot Password",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall
+                                          ?.copyWith(
+                                            color: ColorManager.green,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -166,17 +128,17 @@ class CPPASignUpScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "I already have an Account  ",
+                                    "I don't have account  ",
                                     style:
                                         Theme.of(context).textTheme.bodySmall,
                                   ),
                                   Text(
-                                    "Sign In",
+                                    "Sign Up",
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodySmall
                                         ?.copyWith(
-                                          color: ColorManager.navyBlue,
+                                          color: ColorManager.green,
                                         ),
                                   ),
                                 ],

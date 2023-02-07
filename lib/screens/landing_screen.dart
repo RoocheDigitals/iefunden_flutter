@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/radial_container.dart';
-import 'package:iefunden/commons/utilities.dart';
-import 'package:iefunden/controllers/landing_controller.dart';
+import 'package:iefunden/controllers/navigation_controller.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -15,10 +15,7 @@ class LandingScreen extends StatelessWidget {
             gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [
-            HexColor("#0D31D1"),
-            HexColor("#132885"),
-          ],
+          colors: ColorManager.gradientBlue,
         )),
         child: ContainerWRadial(
           child: Padding(
@@ -61,7 +58,7 @@ class LandingScreen extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  onPressed: () => LandingController.getStartedOnPress(),
+                  onPressed: () => NavigationController.goToGetStarted(),
                   child: const Text("Get Started"),
                 )
               ],
