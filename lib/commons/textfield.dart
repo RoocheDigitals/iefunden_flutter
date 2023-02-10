@@ -32,6 +32,8 @@ class TextFieldBox extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  controller: controller,
+                  style: const TextStyle(color: Colors.black),
                   scrollPadding: const EdgeInsets.only(bottom: 300),
                   decoration: InputDecoration(
                     isDense: true,

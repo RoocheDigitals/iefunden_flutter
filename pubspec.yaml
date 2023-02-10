@@ -38,6 +38,8 @@ dependencies:
   flutter_svg: ^2.0.0+1
   flutter_screenutil: ^5.6.1
   flutter_keyboard_visibility: ^5.4.0
+  amplify_flutter: ^0.6.12
+  amplify_auth_cognito: ^0.6.12
 
 dev_dependencies:
   flutter_test:
