@@ -6,6 +6,7 @@ import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/commons/textfield.dart';
 import 'package:iefunden/controllers/iib_portfolio/iib_portfolio_signup_controller.dart';
+import 'package:iefunden/commons/constants.dart';
 
 class IIBPortfolioSignUpScreen extends StatelessWidget {
   const IIBPortfolioSignUpScreen({super.key});
@@ -74,7 +75,7 @@ class IIBPortfolioSignUpScreen extends StatelessWidget {
                       color: ColorManager.red,
                     ),
                     Text(
-                      "Iefunden",
+                      APP_TITLE,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorManager.red,
                             fontWeight: FontWeight.bold,

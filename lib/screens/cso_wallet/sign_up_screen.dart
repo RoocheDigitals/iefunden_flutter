@@ -6,6 +6,7 @@ import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/commons/textfield.dart';
 import 'package:iefunden/controllers/cso_wallet/cso_wallet_signup_controller.dart';
+import 'package:iefunden/commons/constants.dart';
 
 class CsoWalletSignUpScreen extends StatelessWidget {
   const CsoWalletSignUpScreen({super.key});
@@ -74,7 +75,7 @@ class CsoWalletSignUpScreen extends StatelessWidget {
                       color: ColorManager.green,
                     ),
                     Text(
-                      "Iefunden",
+                      APP_TITLE,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorManager.green,
                             fontWeight: FontWeight.bold,

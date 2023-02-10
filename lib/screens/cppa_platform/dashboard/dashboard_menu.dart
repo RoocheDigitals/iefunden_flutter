@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
+import 'package:iefunden/commons/constants.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 
 class CPPADashboardMenuScreen extends StatelessWidget {
@@ -32,7 +33,7 @@ class CPPADashboardMenuScreen extends StatelessWidget {
                       color: ColorManager.navyBlue,
                     ),
                     Text(
-                      "Iefunden",
+                      APP_TITLE,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorManager.navyBlue,
                             fontWeight: FontWeight.bold,

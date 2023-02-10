@@ -4,6 +4,7 @@ import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
+import 'package:iefunden/commons/constants.dart';
 
 class IIBPortfolioDashboardMenuScreen extends StatelessWidget {
   const IIBPortfolioDashboardMenuScreen({super.key});
@@ -32,7 +33,7 @@ class IIBPortfolioDashboardMenuScreen extends StatelessWidget {
                       color: ColorManager.red,
                     ),
                     Text(
-                      "Iefunden",
+                      APP_TITLE,
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                             color: ColorManager.red,
                             fontWeight: FontWeight.bold,

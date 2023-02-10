@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
+import 'package:iefunden/commons/constants.dart';
 
 class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({super.key});
@@ -40,7 +41,7 @@ class GetStartedScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Iefunden",
+                        APP_TITLE,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:iefunden/color.dart';
+import 'package:iefunden/commons/constants.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 
@@ -35,7 +36,7 @@ class CPPALandingScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Iefunden",
+                        APP_TITLE,
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                     ],
