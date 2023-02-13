@@ -1,4 +1,3 @@
-import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:iefunden/models/responses.dart';
 import 'package:iefunden/services/cppa.dart';
@@ -27,24 +26,10 @@ class CPPAAuthController {
     return response;
   }
 
-  Future<void> signUpUser() async {
-    try {
-      // final result = await cppaService.signIn();
-      // print(result);
-      // final userAttributes = <CognitoUserAttributeKey, String>{
-      //   CognitoUserAttributeKey.email: 'ritzjumola@gmail.com',
-      //   CognitoUserAttributeKey.phoneNumber: '+15559101234',
-      //   // additional attributes as needed
-      // };
-      // final result = await Amplify.Auth.signUp(
-      //   username: 'ritzjumola',
-      //   password: '>tkZs8MU',
-      //   options: CognitoSignUpOptions(userAttributes: userAttributes),
-      // );
-      // print(result.isSignUpComplete);
-    } on AuthException catch (e) {
-      print(e.message);
-    }
+  Future<CPPASignUpResponseModel> signUpUser() async {
+    final result = await cppaService.signUp(companyName.text, pin.text);
+    final response = CPPASignUpResponseModel.fromJson(result);
+    return response;
   }
 
   // Future<void> confirmUser() async {
