@@ -32,8 +32,14 @@ class TextFieldBox extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  enableSuggestions: false,
+                  autocorrect: false,
                   controller: controller,
-                  style: const TextStyle(color: Colors.black),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 16,
+                  ),
                   scrollPadding: const EdgeInsets.only(bottom: 300),
                   decoration: InputDecoration(
                     isDense: true,
@@ -42,6 +48,7 @@ class TextFieldBox extends StatelessWidget {
                     filled: true,
                     border: InputBorder.none,
                   ),
+                  onChanged: onChangeCallback,
                 ),
               ),
             ],

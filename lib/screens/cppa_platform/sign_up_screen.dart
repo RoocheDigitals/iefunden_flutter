@@ -6,7 +6,7 @@ import 'package:iefunden/commons/buttons.dart';
 import 'package:iefunden/commons/constants.dart';
 import 'package:iefunden/commons/radial_container.dart';
 import 'package:iefunden/commons/textfield.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_signup_controller.dart';
+import 'package:iefunden/controllers/cppa_platform/cppa_auth_controller.dart';
 import 'package:iefunden/providers/cppa_platform_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -52,8 +52,7 @@ class CPPASignUpScreen extends StatelessWidget {
       );
     }
 
-    var provider = Provider.of<CPPAPlatformProvider>(context, listen: false);
-    var controller = CPPASignUpController();
+    var controller = CPPAAuthController();
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Consumer<CPPAPlatformProvider>(builder: (context, provider, child) {
@@ -209,7 +208,7 @@ class CPPASignUpScreen extends StatelessWidget {
                 ),
               ),
             ),
-            provider.isSigningUp
+            provider.isLoading
                 ? Container(
                     color: Colors.black.withOpacity(0.5),
                     child: const Center(

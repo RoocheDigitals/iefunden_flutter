@@ -1,42 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_signin_controller.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_signup_controller.dart';
+import 'package:iefunden/controllers/cppa_platform/cppa_auth_controller.dart';
 
 class CPPAPlatformProvider extends ChangeNotifier {
-  late CPPASignInController _signInController;
-  late CPPASignUpController _signUpController;
+  late CPPAAuthController _authController;
 
   CPPAPlatformProvider() {
-    _signInController = CPPASignInController();
-    _signUpController = CPPASignUpController();
+    _authController = CPPAAuthController();
   }
 
-  bool _isSigningIn = false;
-  get isSigningIn => _isSigningIn;
-  set isSigningIn(val) {
-    _isSigningIn = val;
+  String _message = "";
+  get message => _message;
+  set message(val) {
+    _message = val;
     notifyListeners();
   }
 
-  bool _isSigningUp = false;
-  get isSigningUp => _isSigningUp;
-  set isSigningUp(val) {
-    _isSigningUp = val;
-    notifyListeners();
-  }
-
-  bool _isConfirmSigningIn = false;
-  get isConfirmSigningIn => _isConfirmSigningIn;
-  set isConfirmSigningIn(val) {
-    _isConfirmSigningIn = val;
+  bool _isLoading = false;
+  get isLoading => _isLoading;
+  set isLoading(val) {
+    _isLoading = val;
     notifyListeners();
   }
 
   void signUp() async {
-    print("${_signUpController.companyName.text}object");
+    isLoading = true;
+    await _authController.signUpUser();
+    isLoading = false;
+  }
 
-    isSigningUp = true;
-    await _signUpController.signUpUser();
-    isSigningUp = false;
+  // void signIn() async {
+  //   isLoading = true;
+  //   final response = await _signInController.signInUser();
+  //   if(response.) {
+  //     isLoading = false;
+  //   }
+  // }
+
+  void signIn() async {
+    isLoading = true;
+    final response = await _authController.signInUser();
+    print(response);
+    message = response.message;
+    isLoading = false;
   }
 }
