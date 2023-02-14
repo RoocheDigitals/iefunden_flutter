@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/models/cppa/responses.dart';
-import 'package:iefunden/services/cppa.dart';
+import 'package:iefunden/models/cso/request.dart';
+import 'package:iefunden/services/cso.dart';
 
 class CSOWalletAuthController {
   static final CSOWalletAuthController _singleton =
@@ -12,7 +13,7 @@ class CSOWalletAuthController {
 
   CSOWalletAuthController._internal();
 
-  final cppaService = CPPAService();
+  final _csoService = CSOService();
   TextEditingController companyName = TextEditingController();
   TextEditingController companyAddress = TextEditingController();
   TextEditingController contactPerson = TextEditingController();
@@ -22,23 +23,25 @@ class CSOWalletAuthController {
   TextEditingController logo = TextEditingController();
 
   Future<CPPASignInResponseModel> signInUser() async {
-    final result = await cppaService.signIn(companyName.text, pin.text);
+    var request = CSOSignInRequestModel(
+      email.text,
+      pin.text,
+    );
+    final result = await _csoService.signIn(request);
     final response = CPPASignInResponseModel.fromJson(result);
     return response;
   }
 
   Future<CPPASignUpResponseModel> signUpUser() async {
-    final result = await cppaService.signUp(companyName.text, pin.text);
+    var request = CSOSignUpRequestModel(
+      email.text,
+      pin.text,
+      "",
+      "",
+      mobile.text,
+    );
+    final result = await _csoService.signUp(request);
     final response = CPPASignUpResponseModel.fromJson(result);
     return response;
   }
-
-  // Future<void> confirmUser() async {
-  //   try {
-  //     final result = await Amplify.Auth.confirmSignUp(
-  //         username: data.username, confirmationCode: data.confirmCode);
-  //   } on AuthException catch (e) {
-  //     safePrint(e.message);
-  //   }
-  // }
 }

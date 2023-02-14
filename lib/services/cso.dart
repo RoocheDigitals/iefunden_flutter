@@ -3,10 +3,10 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:iefunden/commons/constants.dart';
-import 'package:iefunden/models/cppa/request.dart';
+import 'package:iefunden/models/cso/request.dart';
 
-class CPPAService {
-  Future<dynamic> signIn(CPPASignInRequestModel data) async {
+class CSOService {
+  Future<dynamic> signIn(CSOSignInRequestModel data) async {
     var url = "${API_AUTH_BASE_URL}login/";
     log(url);
     final response = await http.post(
@@ -19,7 +19,7 @@ class CPPAService {
     return jsonDecode(response.body);
   }
 
-  Future<dynamic> signUp(CPPASignUpRequestModel data) async {
+  Future<dynamic> signUp(CSOSignUpRequestModel data) async {
     var url = "${API_AUTH_BASE_URL}register/";
     log(url);
     final response = await http.post(
