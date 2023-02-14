@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:iefunden/models/cppa/responses.dart';
 import 'package:iefunden/services/cppa.dart';
 
-class CPPAAuthController {
-  static final CPPAAuthController _singleton = CPPAAuthController._internal();
+class IIBPortfolioAuthController {
+  static final IIBPortfolioAuthController _singleton =
+      IIBPortfolioAuthController._internal();
 
-  factory CPPAAuthController() {
+  factory IIBPortfolioAuthController() {
     return _singleton;
   }
 
-  CPPAAuthController._internal();
+  IIBPortfolioAuthController._internal();
 
   final cppaService = CPPAService();
   TextEditingController companyName = TextEditingController();

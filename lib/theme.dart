@@ -4,24 +4,27 @@ import 'package:iefunden/color.dart';
 ThemeData? generateTheme() {
   return ThemeData(
     primarySwatch: Colors.blue,
-    scaffoldBackgroundColor: ColorManager.creamWhite,
+    scaffoldBackgroundColor: Colors.white,
     fontFamily: "Inter",
+    appBarTheme: const AppBarTheme(
+      color: Colors.white,
+    ),
     textTheme: TextTheme(
       displayLarge:
           const TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
       titleLarge: TextStyle(
         fontSize: 32.0,
-        color: ColorManager.creamWhite,
+        color: ColorManager.lightBlue,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: TextStyle(
         fontSize: 18.0,
-        color: ColorManager.creamWhite,
+        color: ColorManager.lightBlue,
         fontWeight: FontWeight.bold,
       ),
       bodyMedium: TextStyle(
         fontSize: 18.0,
-        color: ColorManager.creamWhite,
+        color: ColorManager.lightBlue,
         fontWeight: FontWeight.bold,
       ),
       bodySmall: const TextStyle(
@@ -35,15 +38,15 @@ ThemeData? generateTheme() {
         side: const MaterialStatePropertyAll(BorderSide.none),
         shape: const MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.zero),
+            borderRadius: BorderRadius.all(Radius.circular(100)),
           ),
         ),
-        backgroundColor: MaterialStatePropertyAll(ColorManager.creamWhite),
+        backgroundColor: MaterialStatePropertyAll(ColorManager.lightBlue),
         textStyle: MaterialStatePropertyAll(
           TextStyle(
             fontSize: 18.0,
-            fontWeight: FontWeight.bold,
-            foreground: Paint()..color = ColorManager.navyBlue,
+            fontWeight: FontWeight.w500,
+            foreground: Paint()..color = Colors.white,
           ),
         ),
       ),

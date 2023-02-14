@@ -7,31 +7,31 @@ class NavigationController {
   }
 
   ///cppa
-  static goToCPASignUp() {
+  static goToCPPASignUp() {
     navigatorKey.currentState?.pushNamed(CPPASignUpScreenRoute);
   }
 
-  static goToCPASignIn() {
+  static goToCPPASignIn() {
     navigatorKey.currentState?.pushNamed(CPPASignInScreenRoute);
   }
 
-  static goToCPADashboardMenu() {
+  static goToCPPADashboardMenu() {
     navigatorKey.currentState?.pushNamed(CPPADashboardMenuScreenRoute);
   }
 
-  static goToCPADashboardFloatation() {
+  static goToCPPADashboardFloatation() {
     navigatorKey.currentState?.pushNamed(CPPADashboardFloatationScreenRoute);
   }
 
-  static goToCPADashboardBidding() {
+  static goToCPPADashboardBidding() {
     navigatorKey.currentState?.pushNamed(CPPADashboardBiddingScreenRoute);
   }
 
-  static goToCPADashboardListing() {
+  static goToCPPADashboardListing() {
     navigatorKey.currentState?.pushNamed(CPPADashboardListingScreenRoute);
   }
 
-  static goToCPA() {
+  static goToCPPA() {
     navigatorKey.currentState?.pushNamed(CPPALandingScreenRoute);
   }
 

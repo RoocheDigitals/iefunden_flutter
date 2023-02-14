@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:iefunden/controllers/cppa_platform/cppa_auth_controller.dart';
+import 'package:iefunden/controllers/cso_wallet/cso_wallet_auth_controller.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 
-class CPPAPlatformProvider extends ChangeNotifier {
-  late CPPAAuthController _authController;
+class CSOWalletProvider extends ChangeNotifier {
+  late CSOWalletAuthController _authController;
 
-  CPPAPlatformProvider() {
-    _authController = CPPAAuthController();
+  CSOWalletProvider() {
+    _authController = CSOWalletAuthController();
   }
 
   String _message = "";
@@ -41,7 +41,7 @@ class CPPAPlatformProvider extends ChangeNotifier {
     isLoading = true;
     final response = await _authController.signInUser();
     print(response);
-    NavigationController.goToCPPADashboardMenu();
+    NavigationController.goToWalletDashboardMenu();
     message = response.message;
     isLoading = false;
   }

@@ -1,64 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
-import 'package:iefunden/commons/constants.dart';
-import 'package:iefunden/commons/radial_container.dart';
+import 'package:iefunden/commons/main_container.dart';
+import 'package:iefunden/commons/title.dart';
 
 class CPPADashboardFloatationScreen extends StatelessWidget {
   const CPPADashboardFloatationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: ColorManager.creamWhite,
-        child: ContainerWRadial(
-          color: ColorManager.navyBlue,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * .15,
-                vertical: MediaQuery.of(context).size.height * .05),
+    return MainContainer(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const MainTitle(
+            "Welcome to Floatation Dashboard",
+            fontSize: 18,
+          ),
+          Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                SvgPicture.asset(
+                  ("assets/images/Logo.svg"),
+                  semanticsLabel: 'iefunded logo',
+                ),
+                Column(
                   children: [
-                    SvgPicture.asset(
-                      ("assets/images/menu.svg"),
-                      semanticsLabel: 'iefunded menu',
-                      color: ColorManager.navyBlue,
+                    submitButton(
+                      "Issuance of Allotment",
+                      Colors.white,
+                      () => null,
                     ),
-                    Text(
-                      APP_TITLE,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.navyBlue,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox()
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 150.0, top: 200.0),
-                  child: Text(
-                    "Floatation\nDashboard",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontSize: 32,
-                          color: ColorManager.navyBlue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-                submitButton(
-                    "Issuance of Allotment", ColorManager.navyBlue, () {})
+                )
               ],
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }

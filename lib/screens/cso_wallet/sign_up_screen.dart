@@ -1,192 +1,137 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
-import 'package:iefunden/commons/radial_container.dart';
+import 'package:iefunden/commons/main_container.dart';
+import 'package:iefunden/commons/password_textfield.dart';
 import 'package:iefunden/commons/textfield.dart';
-import 'package:iefunden/controllers/cso_wallet/cso_wallet_signup_controller.dart';
-import 'package:iefunden/commons/constants.dart';
+import 'package:iefunden/commons/title.dart';
+import 'package:iefunden/commons/upload_textfield.dart';
+import 'package:iefunden/controllers/cso_wallet/cso_wallet_auth_controller.dart';
+import 'package:iefunden/controllers/navigation_controller.dart';
+import 'package:iefunden/providers/cso_wallet_provider.dart';
+import 'package:provider/provider.dart';
 
 class CsoWalletSignUpScreen extends StatelessWidget {
   const CsoWalletSignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Widget uploadBox() {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    var controller = CSOWalletAuthController();
+    return Consumer<CSOWalletProvider>(builder: (context, provider, child) {
+      return Stack(
         children: [
-          Text(
-            "Upload Logo",
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Colors.black, fontSize: 14),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    scrollPadding: const EdgeInsets.only(bottom: 300),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      contentPadding: const EdgeInsets.all(5),
-                      fillColor: ColorManager.lightGreenShade,
-                      filled: true,
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-                Expanded(
-                    child: submitButton("Browse ", ColorManager.green, () {})),
-              ],
-            ),
-          )
-        ],
-      );
-    }
-
-    var controller = CsoWalletSignUpController();
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Container(
-        color: ColorManager.creamWhite,
-        child: ContainerWRadial(
-          color: ColorManager.green,
-          child: Padding(
-            padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.width * .10,
-              right: MediaQuery.of(context).size.height * .05,
-              left: MediaQuery.of(context).size.height * .05,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(
-                      ("assets/images/menu.svg"),
-                      semanticsLabel: 'iefunded menu',
-                      color: ColorManager.green,
-                    ),
-                    Text(
-                      APP_TITLE,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.green,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox()
-                  ],
-                ),
-                Container(
-                  constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height - 100,
-                  ),
-                  child: SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(),
-                    child: KeyboardVisibilityBuilder(
-                        builder: (context, isKeyboardVisible) {
-                      return Padding(
-                        padding: EdgeInsets.only(
-                            bottom: !isKeyboardVisible ? 0 : 200),
+          MainContainer(
+            body: Container(
+              constraints: BoxConstraints(
+                maxHeight: MediaQuery.of(context).size.height - 100,
+              ),
+              child: SingleChildScrollView(
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const MainTitle(
+                        "Welcome to CSO Wallet",
+                        fontSize: 20,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 30, vertical: 10),
                         child: Form(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 20.0, top: 40),
-                                child: Text(
-                                  "Welcome to \nCSO Wallet",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge
-                                      ?.copyWith(
-                                        color: ColorManager.green,
-                                        fontSize: 25.0,
-                                        fontWeight: FontWeight.w900,
-                                      ),
-                                ),
-                              ),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
                               TextFieldBox(
                                 label: "Full Name",
-                                color: ColorManager.lightGreenShade,
-                                controller: controller.fullName,
+                                color: ColorManager.lightBlueShade,
+                                controller: controller.companyName,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
                                 label: "Email",
-                                color: ColorManager.lightGreenShade,
+                                color: ColorManager.lightBlueShade,
                                 controller: controller.email,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
-                                label: "Password",
-                                color: ColorManager.lightGreenShade,
-                                controller: controller.password,
+                                label: "Type of Services",
+                                color: ColorManager.lightBlueShade,
+                                controller: controller.contactPerson,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
-                                label: "Mobile No.",
-                                color: ColorManager.lightGreenShade,
+                                label: "Mobile Number",
+                                color: ColorManager.lightBlueShade,
                                 controller: controller.mobile,
                                 onChangeCallback: (value) {},
                               ),
-                              TextFieldBox(
-                                label: "Type of Service",
-                                color: ColorManager.lightGreenShade,
-                                controller: controller.typeOfService,
+                              PasswordTextFieldBox(
+                                label: "Create PIN",
+                                controller: controller.pin,
                                 onChangeCallback: (value) {},
                               ),
-                              uploadBox(),
-                              Padding(
-                                padding: const EdgeInsets.only(bottom: 10.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: submitButton(
-                                          "Sign Up", ColorManager.green, () {}),
-                                    ),
-                                  ],
-                                ),
+                              UploadTextFieldBox(
+                                label: "Upload Logo",
+                                controller: controller.logo,
+                                onChangeCallback: (value) {},
+                              ),
+                              const SizedBox(
+                                height: 20,
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text(
-                                    "I already have an Account  ",
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
+                                  linkButton(
+                                    "Forgot Password",
+                                    ColorManager.navyBlue,
+                                    () => null,
                                   ),
-                                  Text(
-                                    "Sign In",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall
-                                        ?.copyWith(
-                                          color: ColorManager.green,
-                                        ),
+                                  submitButton(
+                                    "Sign Up",
+                                    ColorManager.navyBlue,
+                                    () => provider.signUp(),
+                                    width: 100,
+                                    fontSize: 14,
                                   ),
                                 ],
-                              )
-                            ],
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
-              ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  linkButton(
+                                    "I already Have Account",
+                                    ColorManager.navyBlue,
+                                    () => {},
+                                    underlineWidth: 150,
+                                  ),
+                                  submitButton(
+                                    "Log In",
+                                    ColorManager.navyBlue,
+                                    () =>
+                                        NavigationController.goToWalletSignIn(),
+                                    width: 100,
+                                    fontSize: 14,
+                                  ),
+                                ],
+                              ),
+                            ])),
+                      )
+                    ]),
+              ),
             ),
           ),
-        ),
-      ),
-    );
+          provider.isLoading
+              ? Container(
+                  color: Colors.black.withOpacity(0.5),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              : const SizedBox()
+        ],
+      );
+    });
   }
 }

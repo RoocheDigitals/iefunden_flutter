@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:iefunden/color.dart';
-import 'package:iefunden/commons/radial_container.dart';
+import 'package:iefunden/commons/buttons.dart';
+import 'package:iefunden/commons/main_container.dart';
+import 'package:iefunden/commons/title.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 import 'package:iefunden/commons/constants.dart';
 
@@ -10,59 +11,45 @@ class GetStartedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: ColorManager.gradientBlue,
-        )),
-        child: ContainerWRadial(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * .15,
-                vertical: MediaQuery.of(context).size.height * .05),
+    return MainContainer(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MainTitle(
+            APP_TITLE,
+          ),
+          Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                SvgPicture.asset(
+                  ("assets/images/Logo.svg"),
+                  semanticsLabel: 'iefunded logo',
+                ),
+                Column(
                   children: [
-                    SvgPicture.asset(
-                      ("assets/images/menu.svg"),
-                      semanticsLabel: 'iefunded menu',
+                    submitButton(
+                      "C/PPA Platform",
+                      Colors.white,
+                      () => NavigationController.goToCPPA(),
                     ),
+                    submitButton(
+                      "CSO Wallet",
+                      Colors.white,
+                      () => NavigationController.goToWallet(),
+                    ),
+                    submitButton(
+                      "IIB Portfolio",
+                      Colors.white,
+                      () => NavigationController.goToIIBPortfolio(),
+                    )
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 100.0, top: 200.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        APP_TITLE,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                    ],
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => NavigationController.goToCPA(),
-                  child: const Text("C/PPA Platform"),
-                ),
-                TextButton(
-                  onPressed: () => NavigationController.goToWallet(),
-                  child: const Text("CSO Wallet"),
-                ),
-                TextButton(
-                  onPressed: () => NavigationController.goToIIBPortfolio(),
-                  child: const Text("IIB Portfolio"),
                 )
               ],
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }

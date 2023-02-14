@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/color.dart';
 
-class TextFieldBox extends StatelessWidget {
-  const TextFieldBox({
+class PasswordTextFieldBox extends StatefulWidget {
+  const PasswordTextFieldBox({
     super.key,
     required this.label,
-    required this.color,
     required this.controller,
     required this.onChangeCallback,
   });
 
   final String label;
-  final Color color;
   final TextEditingController controller;
   final Function(String) onChangeCallback;
+
+  @override
+  State<PasswordTextFieldBox> createState() => _PasswordTextFieldBoxState();
+}
+
+class _PasswordTextFieldBoxState extends State<PasswordTextFieldBox> {
+  bool isVisiblePassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class TextFieldBox extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          label,
+          widget.label,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 fontSize: 16.0,
               ),
@@ -32,19 +37,36 @@ class TextFieldBox extends StatelessWidget {
             children: [
               Expanded(
                 child: TextFormField(
+                  obscureText: !isVisiblePassword,
                   enableSuggestions: false,
                   autocorrect: false,
-                  controller: controller,
+                  controller: widget.controller,
                   style: TextStyle(
                     color: HexColor("#637C8D"),
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
                   ),
                   decoration: InputDecoration(
-                    hintText: label,
+                    hintText: widget.label,
                     hintStyle: TextStyle(
                       color: HexColor("#637C8D"),
                     ),
+                    suffixIcon: InkWell(
+                      onTap: () => setState(() {
+                        isVisiblePassword = !isVisiblePassword;
+                      }),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 8.0),
+                        child: Icon(
+                          isVisiblePassword
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          size: 20,
+                          color: HexColor("#637C8D"),
+                        ),
+                      ),
+                    ),
+                    suffixIconConstraints: const BoxConstraints(maxHeight: 30),
                     isDense: true,
                     contentPadding: const EdgeInsets.symmetric(
                         vertical: 10, horizontal: 20),
@@ -67,7 +89,7 @@ class TextFieldBox extends StatelessWidget {
                       ),
                     ),
                   ),
-                  onChanged: onChangeCallback,
+                  onChanged: widget.onChangeCallback,
                 ),
               ),
             ],

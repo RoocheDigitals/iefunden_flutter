@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorManager {
   static List<Color> gradientBlue = [HexColor("#0D31D1"), HexColor("#132885")];
+  static Color lightBlue = HexColor("#01A4FF");
   static Color navyBlue = HexColor("#132885");
   static Color green = HexColor("#224519");
   static Color creamWhite = HexColor("#F8F6FE");

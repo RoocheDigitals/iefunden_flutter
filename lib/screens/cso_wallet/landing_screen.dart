@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:iefunden/color.dart';
-import 'package:iefunden/commons/radial_container.dart';
-import 'package:iefunden/commons/constants.dart';
+import 'package:iefunden/commons/buttons.dart';
+import 'package:iefunden/commons/main_container.dart';
+import 'package:iefunden/commons/title.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 
 class CsoWalletLandingScreen extends StatelessWidget {
@@ -10,81 +10,41 @@ class CsoWalletLandingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: ColorManager.green,
-        child: ContainerWRadial(
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * .15,
-                vertical: MediaQuery.of(context).size.height * .05),
+    return MainContainer(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const MainTitle(
+            "Welcome to CSO Wallet",
+            fontSize: 24,
+          ),
+          Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                SvgPicture.asset(
+                  ("assets/images/Logo.svg"),
+                  semanticsLabel: 'iefunded logo',
+                ),
+                Column(
                   children: [
-                    SvgPicture.asset(
-                      ("assets/images/menu.svg"),
-                      semanticsLabel: 'iefunded menu',
-                      color: ColorManager.creamWhite,
+                    submitButton(
+                      "Sign Up",
+                      Colors.white,
+                      () => NavigationController.goToWalletSignUp(),
                     ),
-                    Text(
-                      APP_TITLE,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.creamWhite,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    submitButton(
+                      "Log In",
+                      Colors.white,
+                      () => NavigationController.goToWalletSignIn(),
                     ),
-                    const SizedBox()
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 100.0, top: 200.0),
-                  child: Text(
-                    "Welcome to\nCSO Wallet",
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () => NavigationController.goToWalletSignIn(),
-                  style: Theme.of(context).textButtonTheme.style?.copyWith(
-                        backgroundColor: const MaterialStatePropertyAll(
-                          Colors.transparent,
-                        ),
-                        side: const MaterialStatePropertyAll(
-                          BorderSide(
-                            color: Colors.white,
-                          ),
-                        ),
-                        textStyle: MaterialStatePropertyAll(
-                          TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            foreground: Paint()..color = Colors.white,
-                          ),
-                        ),
-                      ),
-                  child: const Text("Sign In"),
-                ),
-                TextButton(
-                  onPressed: () => NavigationController.goToWalletSignUp(),
-                  style: Theme.of(context).textButtonTheme.style?.copyWith(
-                        textStyle: MaterialStatePropertyAll(
-                          TextStyle(
-                            fontSize: 18.0,
-                            fontWeight: FontWeight.bold,
-                            foreground: Paint()..color = ColorManager.green,
-                          ),
-                        ),
-                      ),
-                  child: const Text("Sign Up"),
-                ),
+                )
               ],
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }

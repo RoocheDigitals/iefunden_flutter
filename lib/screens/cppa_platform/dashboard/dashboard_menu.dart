@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
-import 'package:iefunden/commons/radial_container.dart';
-import 'package:iefunden/commons/constants.dart';
+import 'package:iefunden/commons/main_container.dart';
+import 'package:iefunden/commons/title.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
 
 class CPPADashboardMenuScreen extends StatelessWidget {
@@ -11,68 +10,46 @@ class CPPADashboardMenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        color: ColorManager.creamWhite,
-        child: ContainerWRadial(
-          color: ColorManager.navyBlue,
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width * .15,
-                vertical: MediaQuery.of(context).size.height * .05),
+    return MainContainer(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const MainTitle(
+            "Welcome to C/PPA Platform",
+            fontSize: 24,
+          ),
+          Flexible(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                SvgPicture.asset(
+                  ("assets/images/Logo.svg"),
+                  semanticsLabel: 'iefunded logo',
+                ),
+                Column(
                   children: [
-                    SvgPicture.asset(
-                      ("assets/images/menu.svg"),
-                      semanticsLabel: 'iefunded menu',
-                      color: ColorManager.navyBlue,
+                    submitButton(
+                      "Floatation of Slots",
+                      Colors.white,
+                      () => NavigationController.goToCPPADashboardFloatation(),
                     ),
-                    Text(
-                      APP_TITLE,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: ColorManager.navyBlue,
-                            fontWeight: FontWeight.bold,
-                          ),
+                    submitButton(
+                      "Bidding for Slots",
+                      Colors.white,
+                      () => NavigationController.goToCPPADashboardBidding(),
                     ),
-                    const SizedBox()
+                    submitButton(
+                      "Listing on Slots",
+                      Colors.white,
+                      () => NavigationController.goToCPPADashboardListing(),
+                    )
                   ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 100.0, top: 150.0),
-                  child: Text(
-                    "Welcome to\nC/PPA Platform",
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontSize: 32,
-                          color: ColorManager.navyBlue,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                ),
-                submitButton(
-                  "Floatation of Slots",
-                  ColorManager.navyBlue,
-                  () => NavigationController.goToCPADashboardFloatation(),
-                ),
-                submitButton(
-                  "Bidding for Slots",
-                  ColorManager.navyBlue,
-                  () => NavigationController.goToCPADashboardBidding(),
-                ),
-                submitButton(
-                  "Listing on Slots",
-                  ColorManager.navyBlue,
-                  () => NavigationController.goToCPADashboardListing(),
-                ),
+                )
               ],
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }
