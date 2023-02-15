@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
+import 'package:iefunden/commons/error_text.dart';
 import 'package:iefunden/commons/main_container.dart';
 import 'package:iefunden/commons/password_textfield.dart';
 import 'package:iefunden/commons/textfield.dart';
@@ -45,7 +46,7 @@ class CPPASignInScreen extends StatelessWidget {
                               TextFieldBox(
                                 label: "Company Name",
                                 color: ColorManager.lightBlueShade,
-                                controller: controller.companyName,
+                                controller: controller.loginCompanyName,
                                 onChangeCallback: (value) {},
                               ),
                               const SizedBox(
@@ -53,8 +54,16 @@ class CPPASignInScreen extends StatelessWidget {
                               ),
                               PasswordTextFieldBox(
                                 label: "PIN",
-                                controller: controller.pin,
+                                controller: controller.loginPin,
                                 onChangeCallback: (value) {},
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    ErrorText(provider.message),
+                                  ],
+                                ),
                               ),
                               const SizedBox(
                                 height: 50,

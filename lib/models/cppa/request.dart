@@ -10,7 +10,7 @@ class CPPASignInRequestModel {
   Map<String, dynamic> toJson() => {
         "email": email, //ritz2jumola@gmail.com
         "password": password, //">tkZs8MU",
-        "type": type
+        "type": type.displayName,
       };
 }
 

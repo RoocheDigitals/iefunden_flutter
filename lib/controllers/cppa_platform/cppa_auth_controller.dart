@@ -13,6 +13,11 @@ class CPPAAuthController {
   CPPAAuthController._internal();
 
   final cppaService = CPPAService();
+  // login
+  TextEditingController loginCompanyName = TextEditingController();
+  TextEditingController loginPin = TextEditingController();
+
+  // registration
   TextEditingController companyName = TextEditingController();
   TextEditingController companyAddress = TextEditingController();
   TextEditingController contactPerson = TextEditingController();
@@ -28,8 +33,8 @@ class CPPAAuthController {
 
   Future<CPPASignInResponseModel> signInUser() async {
     var request = CPPASignInRequestModel(
-      email.text,
-      pin.text,
+      loginCompanyName.text,
+      loginPin.text,
     );
     final result = await cppaService.signIn(request);
     final response = CPPASignInResponseModel.fromJson(result);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
+import 'package:iefunden/commons/error_text.dart';
 import 'package:iefunden/commons/main_container.dart';
 import 'package:iefunden/commons/password_textfield.dart';
 import 'package:iefunden/commons/textfield.dart';
@@ -81,6 +82,7 @@ class CPPASignUpScreen extends StatelessWidget {
                                 controller: controller.logo,
                                 onChangeCallback: (value) {},
                               ),
+                              ErrorText(provider.message),
                               const SizedBox(
                                 height: 20,
                               ),
