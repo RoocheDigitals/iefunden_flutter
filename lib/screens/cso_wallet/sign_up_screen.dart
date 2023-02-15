@@ -85,7 +85,8 @@ class CsoWalletSignUpScreen extends StatelessWidget {
                                   linkButton(
                                     "Forgot Password",
                                     ColorManager.navyBlue,
-                                    () => null,
+                                    () => NavigationController
+                                        .goToWalletResetPassword(),
                                   ),
                                   submitButton(
                                     "Sign Up",

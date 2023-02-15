@@ -4,6 +4,7 @@ import 'package:iefunden/screens/cppa_platform/dashboard/dashboard_floatation.da
 import 'package:iefunden/screens/cppa_platform/dashboard/dashboard_listing.dart';
 import 'package:iefunden/screens/cppa_platform/dashboard/dashboard_menu.dart';
 import 'package:iefunden/screens/cppa_platform/landing_screen.dart';
+import 'package:iefunden/screens/cppa_platform/reset_password_screen.dart';
 import 'package:iefunden/screens/cppa_platform/sign_in_screen.dart';
 import 'package:iefunden/screens/cppa_platform/sign_up_screen.dart';
 import 'package:iefunden/screens/cso_wallet/dashboard/dashboard_alt_spending.dart';
@@ -11,6 +12,7 @@ import 'package:iefunden/screens/cso_wallet/dashboard/dashboard_collect_spending
 import 'package:iefunden/screens/cso_wallet/dashboard/dashboard_menu.dart';
 import 'package:iefunden/screens/cso_wallet/dashboard/dashboard_pref_spending.dart';
 import 'package:iefunden/screens/cso_wallet/landing_screen.dart';
+import 'package:iefunden/screens/cso_wallet/reset_password_screen.dart';
 import 'package:iefunden/screens/cso_wallet/sign_in_screen.dart';
 import 'package:iefunden/screens/cso_wallet/sign_up_screen.dart';
 import 'package:iefunden/screens/get_started_screen.dart';
@@ -19,6 +21,7 @@ import 'package:iefunden/screens/iib_portfolio/dashboard/dashboard_tier_one.dart
 import 'package:iefunden/screens/iib_portfolio/dashboard/dashboard_tier_three.dart';
 import 'package:iefunden/screens/iib_portfolio/dashboard/dashboard_tier_two.dart';
 import 'package:iefunden/screens/iib_portfolio/landing_screen.dart';
+import 'package:iefunden/screens/iib_portfolio/reset_password_screen.dart';
 import 'package:iefunden/screens/iib_portfolio/sign_in_screen.dart';
 import 'package:iefunden/screens/iib_portfolio/sign_up_screen.dart';
 import 'package:iefunden/screens/landing_screen.dart';
@@ -30,6 +33,7 @@ const String GetStartedScreenRoute = '/get-started';
 const String CPPALandingScreenRoute = '/cppa';
 const String CPPASignInScreenRoute = '/cppa/sign-in';
 const String CPPASignUpScreenRoute = '/cppa/sign-up';
+const String CPPAResetPasswordScreenRoute = '/cppa/reset-password';
 const String CPPADashboardMenuScreenRoute = '/cppa/dashboard';
 const String CPPADashboardFloatationScreenRoute = '/cppa/dashboard-float';
 const String CPPADashboardBiddingScreenRoute = '/cppa/dashboard-listing';
@@ -39,6 +43,7 @@ const String CPPADashboardListingScreenRoute = '/cppa/dashboard-bidding';
 const String CsoWalletLandingScreenRoute = '/cso-wallet';
 const String CsoWalletSignInScreenRoute = '/cso-wallet/sign-in';
 const String CsoWalletSignUpScreenRoute = '/cso-wallet/sign-up';
+const String CsoWalletResetPasswordScreenRoute = '/cso-wallet/reset-password';
 const String CsoWalletDashboardMenuScreenRoute = '/cso-wallet/dashboard';
 const String CsoWalletDashboardPrefSpendingScreenRoute =
     '/cso-wallet/dashboard-pref-spending';
@@ -51,6 +56,7 @@ const String CsoWalletDashboardColSpendingScreenRoute =
 const String IIBPortfolioLandingScreenRoute = '/iib';
 const String IIBPortfolioSignInScreenRoute = '/iib/sign-in';
 const String IIBPortfolioSignUpScreenRoute = '/iib/sign-up';
+const String IIBPortfolioResetPasswordScreenRoute = '/iib/reset-password';
 const String IIBPortfolioDashboardMenuScreenRoute = '/iib/dashboard';
 const String IIBPortfolioDashboardTierOneScreenRoute =
     '/iib/dashboard-tier-one';
@@ -73,6 +79,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const CPPASignInScreen());
     case CPPASignUpScreenRoute:
       return MaterialPageRoute(builder: (context) => const CPPASignUpScreen());
+    case CPPAResetPasswordScreenRoute:
+      return MaterialPageRoute(
+          builder: (context) => const CPPAResetPasswordScreen());
     case CPPADashboardMenuScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const CPPADashboardMenuScreen());
@@ -96,6 +105,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case CsoWalletSignUpScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const CsoWalletSignUpScreen());
+    case CsoWalletResetPasswordScreenRoute:
+      return MaterialPageRoute(
+          builder: (context) => const CsoWalletResetPasswordScreen());
     case CsoWalletDashboardMenuScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const CsoWalletDashboardMenuScreen());
@@ -119,6 +131,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
     case IIBPortfolioSignUpScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const IIBPortfolioSignUpScreen());
+    case IIBPortfolioResetPasswordScreenRoute:
+      return MaterialPageRoute(
+          builder: (context) => const IIBPortfolioResetPasswordScreen());
     case IIBPortfolioDashboardMenuScreenRoute:
       return MaterialPageRoute(
           builder: (context) => const IIBPortfolioDashboardMenuScreen());

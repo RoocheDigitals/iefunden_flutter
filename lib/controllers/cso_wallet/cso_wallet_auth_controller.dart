@@ -22,6 +22,11 @@ class CSOWalletAuthController {
   TextEditingController pin = TextEditingController();
   TextEditingController logo = TextEditingController();
 
+  // reset password text controllers
+  TextEditingController oldPin = TextEditingController();
+  TextEditingController newPin = TextEditingController();
+  TextEditingController confirmPin = TextEditingController();
+
   Future<CPPASignInResponseModel> signInUser() async {
     var request = CSOSignInRequestModel(
       email.text,

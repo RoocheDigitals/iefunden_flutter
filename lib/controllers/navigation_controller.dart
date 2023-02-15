@@ -15,6 +15,10 @@ class NavigationController {
     navigatorKey.currentState?.pushNamed(CPPASignInScreenRoute);
   }
 
+  static goToCPPAResetPassword() {
+    navigatorKey.currentState?.pushNamed(CPPAResetPasswordScreenRoute);
+  }
+
   static goToCPPADashboardMenu() {
     navigatorKey.currentState?.pushNamed(CPPADashboardMenuScreenRoute);
   }
@@ -42,6 +46,10 @@ class NavigationController {
 
   static goToWalletSignIn() {
     navigatorKey.currentState?.pushNamed(CsoWalletSignInScreenRoute);
+  }
+
+  static goToWalletResetPassword() {
+    navigatorKey.currentState?.pushNamed(CsoWalletResetPasswordScreenRoute);
   }
 
   static goToWalletDashboardMenu() {
@@ -74,6 +82,10 @@ class NavigationController {
 
   static goToIIBSignIn() {
     navigatorKey.currentState?.pushNamed(IIBPortfolioSignInScreenRoute);
+  }
+
+  static goToIIBResetPassword() {
+    navigatorKey.currentState?.pushNamed(IIBPortfolioResetPasswordScreenRoute);
   }
 
   static goToIIBDashboardMenu() {

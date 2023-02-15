@@ -91,7 +91,8 @@ class CPPASignUpScreen extends StatelessWidget {
                                   linkButton(
                                     "Forgot Password",
                                     ColorManager.navyBlue,
-                                    () => null,
+                                    () => NavigationController
+                                        .goToCPPAResetPassword(),
                                   ),
                                   submitButton(
                                     "Sign Up",

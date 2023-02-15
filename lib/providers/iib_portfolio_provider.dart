@@ -29,20 +29,17 @@ class IIBPortfolioProvider extends ChangeNotifier {
     isLoading = false;
   }
 
-  // void signIn() async {
-  //   isLoading = true;
-  //   final response = await _signInController.signInUser();
-  //   if(response.) {
-  //     isLoading = false;
-  //   }
-  // }
-
   void signIn() async {
     isLoading = true;
     final response = await _authController.signInUser();
     print(response);
     NavigationController.goToIIBDashboardMenu();
     message = response.message;
+    isLoading = false;
+  }
+
+  void resetPassword() async {
+    isLoading = true;
     isLoading = false;
   }
 }

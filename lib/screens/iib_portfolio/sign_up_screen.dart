@@ -85,7 +85,8 @@ class IIBPortfolioSignUpScreen extends StatelessWidget {
                                   linkButton(
                                     "Forgot Password",
                                     ColorManager.navyBlue,
-                                    () => null,
+                                    () => NavigationController
+                                        .goToIIBResetPassword(),
                                   ),
                                   submitButton(
                                     "Sign Up",

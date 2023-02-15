@@ -29,20 +29,17 @@ class CSOWalletProvider extends ChangeNotifier {
     isLoading = false;
   }
 
-  // void signIn() async {
-  //   isLoading = true;
-  //   final response = await _signInController.signInUser();
-  //   if(response.) {
-  //     isLoading = false;
-  //   }
-  // }
-
   void signIn() async {
     isLoading = true;
     final response = await _authController.signInUser();
     print(response);
     NavigationController.goToWalletDashboardMenu();
     message = response.message;
+    isLoading = false;
+  }
+
+  void resetPassword() async {
+    isLoading = true;
     isLoading = false;
   }
 }
