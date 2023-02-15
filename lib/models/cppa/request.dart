@@ -5,7 +5,8 @@ class CPPASignInRequestModel {
   String password;
   PoolType type;
 
-  CPPASignInRequestModel(this.email, this.password, {this.type = PoolType.CPA});
+  CPPASignInRequestModel(this.email, this.password,
+      {this.type = PoolType.CPPA});
   Map<String, dynamic> toJson() => {
         "email": email, //ritz2jumola@gmail.com
         "password": password, //">tkZs8MU",
@@ -23,7 +24,7 @@ class CPPASignUpRequestModel {
 
   CPPASignUpRequestModel(
       this.email, this.password, this.firstName, this.lastName, this.telephone,
-      {this.type = PoolType.CPA});
+      {this.type = PoolType.CPPA});
 
   Map<String, dynamic> toJson() => {
         "email": email, //ritz2jumola@gmail.com
