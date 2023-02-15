@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/color.dart';
 import 'package:iefunden/commons/buttons.dart';
+import 'package:iefunden/commons/error_text.dart';
 import 'package:iefunden/commons/main_container.dart';
 import 'package:iefunden/commons/password_textfield.dart';
 import 'package:iefunden/commons/textfield.dart';
@@ -44,7 +45,7 @@ class IIBPortfolioSignUpScreen extends StatelessWidget {
                               TextFieldBox(
                                 label: "Full Name",
                                 color: ColorManager.lightBlueShade,
-                                controller: controller.companyName,
+                                controller: controller.fullName,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
@@ -56,7 +57,7 @@ class IIBPortfolioSignUpScreen extends StatelessWidget {
                               TextFieldBox(
                                 label: "Type of Services",
                                 color: ColorManager.lightBlueShade,
-                                controller: controller.contactPerson,
+                                controller: controller.typeOfService,
                                 onChangeCallback: (value) {},
                               ),
                               TextFieldBox(
@@ -75,6 +76,7 @@ class IIBPortfolioSignUpScreen extends StatelessWidget {
                                 controller: controller.logo,
                                 onChangeCallback: (value) {},
                               ),
+                              ErrorText(provider.message),
                               const SizedBox(
                                 height: 20,
                               ),

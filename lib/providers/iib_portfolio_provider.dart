@@ -25,16 +25,19 @@ class IIBPortfolioProvider extends ChangeNotifier {
 
   void signUp() async {
     isLoading = true;
-    await _authController.signUpUser();
+    final result = await _authController.signUpUser();
+    if (!result.userConfirmed) {}
+    message = result.message;
     isLoading = false;
   }
 
   void signIn() async {
     isLoading = true;
-    final response = await _authController.signInUser();
-    print(response);
-    NavigationController.goToIIBDashboardMenu();
-    message = response.message;
+    final result = await _authController.signInUser();
+    if (result.accessToken.isNotEmpty) {
+      NavigationController.goToWalletDashboardMenu();
+    }
+    message = result.message;
     isLoading = false;
   }
 
