@@ -15,17 +15,14 @@ class CSOSignInResponseModel {
 }
 
 class CSOSignUpResponseModel {
-  String accessToken;
-  String refreshToken;
-  String idToken;
+  bool userConfirmed;
+  String userSub;
   String message;
 
-  CSOSignUpResponseModel(
-      this.accessToken, this.refreshToken, this.idToken, this.message);
+  CSOSignUpResponseModel(this.userConfirmed, this.userSub, this.message);
 
   CSOSignUpResponseModel.fromJson(Map<String, dynamic> json)
-      : accessToken = json['AccessToken'] ?? "",
-        refreshToken = json['RefreshToken'] ?? "",
-        idToken = json['IdToken'] ?? "",
+      : userConfirmed = json['UserConfirmed'] ?? false,
+        userSub = json['UserSub'] ?? "",
         message = json['message'] ?? "";
 }

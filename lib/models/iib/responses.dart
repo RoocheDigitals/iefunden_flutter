@@ -15,17 +15,14 @@ class IIBSignInResponseModel {
 }
 
 class IIBSignUpResponseModel {
-  String accessToken;
-  String refreshToken;
-  String idToken;
+  bool userConfirmed;
+  String userSub;
   String message;
 
-  IIBSignUpResponseModel(
-      this.accessToken, this.refreshToken, this.idToken, this.message);
+  IIBSignUpResponseModel(this.userConfirmed, this.userSub, this.message);
 
   IIBSignUpResponseModel.fromJson(Map<String, dynamic> json)
-      : accessToken = json['AccessToken'] ?? "",
-        refreshToken = json['RefreshToken'] ?? "",
-        idToken = json['IdToken'] ?? "",
+      : userConfirmed = json['UserConfirmed'] ?? false,
+        userSub = json['UserSub'] ?? "",
         message = json['message'] ?? "";
 }
