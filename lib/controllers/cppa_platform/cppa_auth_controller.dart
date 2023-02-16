@@ -50,6 +50,7 @@ class CPPAAuthController {
       mobile.text,
     );
     final result = await cppaService.signUp(request);
+    print(result);
     final response = CPPASignUpResponseModel.fromJson(result);
     return response;
   }

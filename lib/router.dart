@@ -15,6 +15,7 @@ import 'package:iefunden/screens/cso_wallet/landing_screen.dart';
 import 'package:iefunden/screens/cso_wallet/reset_password_screen.dart';
 import 'package:iefunden/screens/cso_wallet/sign_in_screen.dart';
 import 'package:iefunden/screens/cso_wallet/sign_up_screen.dart';
+import 'package:iefunden/screens/email_verification_screen.dart';
 import 'package:iefunden/screens/get_started_screen.dart';
 import 'package:iefunden/screens/iib_portfolio/dashboard/dashboard_menu.dart';
 import 'package:iefunden/screens/iib_portfolio/dashboard/dashboard_tier_one.dart';
@@ -28,6 +29,7 @@ import 'package:iefunden/screens/landing_screen.dart';
 
 const String LandingScreenRoute = '/';
 const String GetStartedScreenRoute = '/get-started';
+const String EmailVerificationRoute = '/email-verify';
 
 /// cppa
 const String CPPALandingScreenRoute = '/cppa';
@@ -71,6 +73,9 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const LandingScreen());
     case GetStartedScreenRoute:
       return MaterialPageRoute(builder: (context) => const GetStartedScreen());
+    case EmailVerificationRoute:
+      return MaterialPageRoute(
+          builder: (context) => const EmailVerificationScreen());
 
     /// cppa
     case CPPALandingScreenRoute:

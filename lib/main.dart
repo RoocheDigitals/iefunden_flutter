@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:iefunden/commons/constants.dart';
 import 'package:iefunden/providers/cppa_platform_provider.dart';
 import 'package:iefunden/providers/cso_wallet_provider.dart';
+import 'package:iefunden/providers/email_verify_provider.dart';
 import 'package:iefunden/providers/iib_portfolio_provider.dart';
 import 'package:iefunden/theme.dart' as theme;
 import 'package:provider/provider.dart';
@@ -28,6 +29,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => CPPAPlatformProvider()),
         ChangeNotifierProvider(create: (context) => CSOWalletProvider()),
         ChangeNotifierProvider(create: (context) => IIBPortfolioProvider()),
+        ChangeNotifierProvider(
+            create: (context) => EmailVerificationProvider()),
       ],
       child: MaterialApp(
         title: APP_TITLE,

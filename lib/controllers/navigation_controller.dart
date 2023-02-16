@@ -6,6 +6,10 @@ class NavigationController {
     navigatorKey.currentState?.pushNamed(GetStartedScreenRoute);
   }
 
+  static goToVerifyEmail() {
+    navigatorKey.currentState?.pushNamed(EmailVerificationRoute);
+  }
+
   ///cppa
   static goToCPPASignUp() {
     navigatorKey.currentState?.pushNamed(CPPASignUpScreenRoute);

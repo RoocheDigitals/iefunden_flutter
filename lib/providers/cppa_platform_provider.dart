@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iefunden/controllers/cppa_platform/cppa_auth_controller.dart';
 import 'package:iefunden/controllers/navigation_controller.dart';
+import 'package:iefunden/main.dart';
+import 'package:iefunden/providers/email_verify_provider.dart';
+import 'package:provider/provider.dart';
 
 class CPPAPlatformProvider extends ChangeNotifier {
   late CPPAAuthController _authController;
@@ -26,7 +29,14 @@ class CPPAPlatformProvider extends ChangeNotifier {
   void signUp() async {
     isLoading = true;
     final result = await _authController.signUpUser();
-    if (!result.userConfirmed) {}
+    if (!result.userConfirmed) {
+      var emailProvider = Provider.of<EmailVerificationProvider>(
+        navigatorKey.currentContext!,
+        listen: false,
+      );
+      emailProvider.title = "Welcome to CPP/A Verification Email";
+      NavigationController.goToVerifyEmail();
+    }
     message = result.message;
     isLoading = false;
   }
